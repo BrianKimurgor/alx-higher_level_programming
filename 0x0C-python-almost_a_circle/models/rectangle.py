@@ -1,4 +1,7 @@
-ns class Rectangle which implements Base.
+#!/usr/bin/python3
+
+
+"""contains class Rectangle which implements Base.
 """
 from models.base import Base
 

@@ -1,4 +1,7 @@
-ns class Square implements class Rectangle
+#!/usr/bin/python3
+
+
+"""Contains class Square implements class Rectangle
 """
 from models.rectangle import Rectangle
 
