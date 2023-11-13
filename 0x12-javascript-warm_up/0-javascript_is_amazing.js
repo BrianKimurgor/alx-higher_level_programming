@@ -2,5 +2,5 @@
 
 const myVar = 'JavaScript is amazing';
 
-let javascript = myVar;
-console.log(javascript);
+const amaze = myVar;
+console.log(amaze);
