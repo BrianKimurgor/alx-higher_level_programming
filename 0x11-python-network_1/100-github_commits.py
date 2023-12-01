@@ -2,8 +2,6 @@
 """lists the 10 most recent commits on a given GitHub repository.
 """
 
-
-
 if __name__ == "__main__":
     import sys
     import requests

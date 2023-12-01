@@ -2,7 +2,6 @@
 """Displays the X-Request-Id header variable of a request to a given URL
 """
 
-
 if __name__ == "__main__":
     import sys
     import requests
