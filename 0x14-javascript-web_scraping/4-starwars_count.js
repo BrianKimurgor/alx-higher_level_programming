@@ -1,8 +1,8 @@
 #!/usr/bin/node
 /**
- * Script that prints the number of movies where the character "Wedge Antilles" (character ID 18) is present.
- * The first argument is the API URL of the Star Wars API: https://swapi-api.alx-tools.com/api/films/
- * Uses character ID 18 to filter the movies.
+ * Script that prints the number of movies where the character “Wedge Antilles” is present.
+ * The first argument is the API URL of the Star wars API: https://swapi-api.alx-tools.com/api/films/
+ * Wedge Antilles is character ID 18 - script must use this ID for filtering the result of the API.
  * Module used: request
  */
 
@@ -11,11 +11,8 @@ const request = require('request');
 // Get the API URL from the command-line arguments
 const apiUrl = process.argv[2];
 
-// Character ID for "Wedge Antilles"
-const characterId = 18;
-
-// Send a GET request using the 'request' module to fetch movie data
-request(apiUrl, (error, response, body) => {
+// Send a GET request to fetch the list of movies from the provided API URL
+request.get(apiUrl, (error, response, body) => {
   if (error) {
     // If there's an error, log the error message
     console.error(`Error: ${error}`);
@@ -26,12 +23,12 @@ request(apiUrl, (error, response, body) => {
     // Parse the JSON response body to get the list of movies
     const movies = JSON.parse(body).results;
 
-    // Filter movies where "Wedge Antilles" (character ID 18) is present
-    const moviesWithWedge = movies.filter(movie =>
-      movie.characters.includes(`https://swapi-api.alx-tools.com/api/people/${characterId}/`)
-    );
+    // Filter the movies to count how many times the character with ID 18 (Wedge Antilles) appears
+    const numberOfMoviesWithWedgeAntilles = movies.filter(movie =>
+      movie.characters.includes('https://swapi-api.alx-tools.com/api/people/18/')
+    ).length;
 
-    // Print the number of movies where "Wedge Antilles" is present
-    console.log(moviesWithWedge.length);
+    // Print the number of movies where Wedge Antilles appears
+    console.log(numberOfMoviesWithWedgeAntilles);
   }
 });
