@@ -1,24 +1,23 @@
 #!/usr/bin/node
 /**
- * script that displays status code of a GET request
- * first argument is the URL to request (GET)
- * status code is printed like code:<status code>
- * module used: built-in https module
+ * Script that displays the status code of a GET request.
+ * The first argument is the URL to request (GET).
+ * The status code must be printed like this: code: <status code>.
+ * Module used: request
  */
 
-const https = require('https');
+const request = require('request');
 
-// Getting URL from the command line arguments
+// Get the URL from the command-line arguments
 const url = process.argv[2];
 
-// Function to send a GET request
-function getRequest(url) {
-  https.get(url, (response) => {
-    console.log(`code:${response.statusCode}`);
-  }).on('error', (error) => {
+// Send a GET request using the 'request' module
+request(url, (error, response) => {
+  if (error) {
+    // If there's an error, log the error message
     console.error(`Error ${error}`);
-  });
-}
-
-// Call the function with the URL
-getRequest(url);
+  } else {
+    // If successful, log the status code
+    console.log(`code: ${response.statusCode}`);
+  }
+});
