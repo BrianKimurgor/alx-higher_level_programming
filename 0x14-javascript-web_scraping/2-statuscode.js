@@ -3,27 +3,22 @@
  * script that displays status code of a GET request
  * first argument is the URL to request (GET)
  * status code is printed like code:<status code>
- * module used, request
+ * module used: built-in https module
  */
 
-const request = require('request');
+const https = require('https');
 
-// getting URL from the command line arguments
+// Getting URL from the command line arguments
 const url = process.argv[2];
 
-// function to send Get request
+// Function to send a GET request
 function getRequest(url) {
-  request({
-    url,
-    method: 'GET'
-  }, (error, response, body) => {
-    if (error) {
-      console.error(`Error ${error}`);
-    } else {
-      console.log(`code:${response.statusCode}`); // Corrected string interpolation here
-    }
+  https.get(url, (response) => {
+    console.log(`code:${response.statusCode}`);
+  }).on('error', (error) => {
+    console.error(`Error ${error}`);
   });
 }
 
-// call the function with the URL
+// Call the function with the URL
 getRequest(url);
