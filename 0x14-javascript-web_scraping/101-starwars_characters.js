@@ -34,7 +34,7 @@ request.get(apiUrl, (error, response, body) => {
             const character = JSON.parse(charBody);
             resolve(character.name);
           } else {
-            reject(`Error fetching character: ${charError}`);
+            reject(new Error(`Error fetching character: ${charError}`)); // Updated to use new Error()
           }
         });
       });
